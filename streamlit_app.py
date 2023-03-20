@@ -34,3 +34,6 @@ streamlit.write('the user entered is',fruit_choice)
 
 import request
 fruityvice_response=requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+
+
+import snowflake.connector
