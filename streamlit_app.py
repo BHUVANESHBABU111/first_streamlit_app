@@ -32,15 +32,22 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
 streamlit.dataframe(fruityvice_normalized)
 
+def get_fruityvice_data(this_fruit_choice):
+  fruityvice_respone=requests.get("https://fruityvice.com/api/fruits"+ this_fruit_choice)
+  fruityvice_normalized=pandas.json_normalized(fruityvice_response.json())
+  return fruityvice_normalized
+      
+  
+
 streamlit.header('fruityvice favourit food')
 try:
   fruit_choice=streamlit.text_input('what fruit would you like information about?')
   if not fruit_choice:
     streamlit.error("please select a fruit to get information")
   else:
-                    fruityvice_respone=requests.get("https://fruityvice.com/api/fruits"+ fruit_choice)
-                    fruityvice_normalized=pandas.json_normalized(fruityvice_response.json())
-                    streamlit.dataframe(fruityvice_normalized)
+    back_from_function=get_fruityvice_data(fruit_choice)
+    streamlit.datafram(back_from_function)
+      
 except urlerror as e:
                   streamlit.error()
                   
