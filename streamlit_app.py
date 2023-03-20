@@ -46,4 +46,4 @@ my_row=my_cur.fetchall()
 #streamlit.text(my_row)
 
 streamlit.header("the fruit load list contains")
-streamlit.dataframe(my_row)
+streamlit.text(my_row)
